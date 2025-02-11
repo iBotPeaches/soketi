@@ -182,7 +182,7 @@ export class Namespace {
    */
   terminateUserConnections(userId: number | string): void {
     this.getSockets().then((sockets) => {
-      ;[...sockets].forEach(([wsId, ws]) => {
+      Array.from(sockets).forEach(([wsId, ws]) => {
         if (ws.user && ws.user.id == userId) {
           ws.sendJson({
             event: "pusher:error",

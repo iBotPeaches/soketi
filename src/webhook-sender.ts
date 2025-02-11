@@ -15,7 +15,7 @@ export interface ClientEventData {
     [key: string]: any
   }
   socket_id?: string
-  user_id?: string
+  user_id?: string | number
   time_ms?: number
 }
 
@@ -212,7 +212,7 @@ export class WebhookSender {
     event: string,
     data: any,
     socketId?: string,
-    userId?: string,
+    userId?: string | number,
   ) {
     if (!app.hasClientEventWebhooks) {
       return
@@ -258,7 +258,11 @@ export class WebhookSender {
   /**
    * Send a member_removed event.
    */
-  public sendMemberRemoved(app: App, channel: string, userId: string): void {
+  public sendMemberRemoved(
+    app: App,
+    channel: string,
+    userId: string | number,
+  ): void {
     if (!app.hasMemberRemovedWebhooks) {
       return
     }

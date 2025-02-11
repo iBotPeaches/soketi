@@ -1,9 +1,9 @@
-import { PresenceMemberInfo } from "./channels/presence-channel-manager"
+import { type PresenceMember } from "./channels/presence-channel-manager"
 
 declare module "uWebSockets.js" {
   interface WebSocket<UserData> {
     id: string
-    presence: Map<string, PresenceMemberInfo>
+    presence: Map<string, PresenceMember>
     user: UserData
     sendJson: (data: any) => void
     appKey: string
@@ -11,5 +11,7 @@ declare module "uWebSockets.js" {
     timeout: NodeJS.Timeout | null
     userAuthenticationTimeout: NodeJS.Timeout | null
     app: any
+    ip: string
+    ip2: string
   }
 }

@@ -5,7 +5,7 @@ import { HttpRequest, HttpResponse } from "uWebSockets.js"
 import { Log } from "./log"
 import { Namespace } from "./namespace"
 import { PresenceChannelManager } from "./channels"
-import { PresenceMemberInfo } from "./channels/presence-channel-manager"
+import { type PresenceMember } from "./channels/presence-channel-manager"
 import { PrivateChannelManager } from "./channels"
 import { PublicChannelManager } from "./channels"
 import { PusherMessage, uWebSocketMessage } from "./message"
@@ -79,7 +79,7 @@ export class WsHandler {
 
     ws.id = this.generateSocketId()
     ws.subscribedChannels = new Set()
-    ws.presence = new Map<string, PresenceMemberInfo>()
+    ws.presence = new Map<string, PresenceMember>()
 
     if (this.server.closing) {
       ws.sendJson({
