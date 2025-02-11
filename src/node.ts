@@ -1,7 +1,7 @@
 export interface Node {
-    isMaster: boolean;
-    address: string;
-    port: number;
-    lastSeen: number;
-    id: string;
+  isMaster: boolean
+  address: string
+  port: number
+  lastSeen: number
+  id: string
 }
